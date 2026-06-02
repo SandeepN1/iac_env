@@ -5,7 +5,7 @@ This repository provisions an Azure resource group with Terraform by consuming t
 ## What was added
 
 - A Terraform root module in this repository
-- A GitHub Actions workflow at `/tmp/workspace/SandeepN1/iac_env/.github/workflows/terraform-azure.yml`
+- A GitHub Actions workflow at `.github/workflows/terraform-azure.yml`
 - Minimal documentation for required secrets and Terraform inputs
 
 ## Required GitHub secret
@@ -44,9 +44,9 @@ The root module uses the resource group module from:
 
 `git::https://github.com/SandeepN1/Test_Terraform_Modules.git//modules/resource-group`
 
-Default input values are defined in `/tmp/workspace/SandeepN1/iac_env/variables.tf` so the pipeline can run without extra workflow inputs.
+Default input values are defined in `variables.tf` so the pipeline can run without extra workflow inputs.
 
-If you want to override them for local use, copy `/tmp/workspace/SandeepN1/iac_env/terraform.tfvars.example` to `terraform.tfvars` and update the values.
+If you want to override them for local use, copy `terraform.tfvars.example` to `terraform.tfvars` and update the values.
 
 ## Local usage
 
