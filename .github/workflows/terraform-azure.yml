@@ -39,7 +39,7 @@ jobs:
     # Job to perform terraform plan, check against OPA policies, calculate InfraCost and send notification for approval
     aws_plan:
         if: github.event.inputs.CloudProvider == 'aws'
-        runs-on: iac
+        runs-on: self-hosted
          
         steps:
         - name: Generate token
