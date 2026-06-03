@@ -237,6 +237,7 @@ jobs:
             diffTotalMonthlyCost=`jq '.diffTotalMonthlyCost' costing.json|sed 's/"//g'`
             value=`echo "PreviousCost: $pastTotalMonthlyCost NewCost: $totalMonthlyCost NetCost: $diffTotalMonthlyCost"`
             echo "CostUsage=$value" >> $GITHUB_ENV         
+        # TODO: Restore MS Teams notification once GS-MAFTech/ms-teams-notifications action is available again.
         # - name: Notify
         #   uses: GS-MAFTech/ms-teams-notifications@dev
         #   if: always()
@@ -256,8 +257,6 @@ jobs:
         #         url: "https://github.com/${{github.repository}}/commit/${{github.sha}}/#commitcomment-${{ env.commitcom }}"
         #       - text: COST Details
         #         url: "https://github.com/${{github.repository}}/commit/${{github.sha}}/#commitcomment-${{ env.commitcomm }}"
-
-
 
     aws_apply:
         runs-on: self-hosted
@@ -597,6 +596,7 @@ jobs:
             diffTotalMonthlyCost=`jq '.diffTotalMonthlyCost' costing.json|sed 's/"//g'`
             value=`echo "PreviousCost: $pastTotalMonthlyCost NewCost: $totalMonthlyCost NetCost: $diffTotalMonthlyCost"`
             echo "CostUsage=$value" >> $GITHUB_ENV         
+        # TODO: Restore MS Teams notification once GS-MAFTech/ms-teams-notifications action is available again.
         # - name: Notify
         #   uses: GS-MAFTech/ms-teams-notifications@dev
         #   if: always()
