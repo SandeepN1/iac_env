@@ -174,7 +174,7 @@ jobs:
           path: modules
 
       - name: Set Azure credential secret names
-        shell: pwsh
+        shell: powershell
         run: |
           $ghsecret_m = "${{ env.ghsecret }}" -replace '-', '_'
           $ghkey_m = "${{ env.ghkey }}" -replace '-', '_'
@@ -189,7 +189,7 @@ jobs:
           az version
 
       - name: Azure login
-        shell: pwsh
+        shell: powershell
         run: |
           az login --service-principal `
             -u "${{ secrets[env.ghkey_m] }}" `
@@ -283,7 +283,7 @@ jobs:
           path: modules
 
       - name: Set Azure credential secret names
-        shell: pwsh
+        shell: powershell
         run: |
           $ghsecret_m = "${{ env.ghsecret }}" -replace '-', '_'
           $ghkey_m = "${{ env.ghkey }}" -replace '-', '_'
@@ -296,7 +296,7 @@ jobs:
           az version
 
       - name: Azure login
-        shell: pwsh
+        shell: powershell
         run: |
           az login --service-principal `
             -u "${{ secrets[env.ghkey_m] }}" `
