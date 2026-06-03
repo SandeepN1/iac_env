@@ -174,12 +174,12 @@ jobs:
           path: modules
 
       - name: Set Azure credential secret names
-        shell: bash
+        shell: pwsh
         run: |
-          ghsecret_m=$(echo "${{ env.ghsecret }}" | sed 's/-/_/g')
-          ghkey_m=$(echo "${{ env.ghkey }}" | sed 's/-/_/g')
-          echo "ghsecret_m=$ghsecret_m" >> "$GITHUB_ENV"
-          echo "ghkey_m=$ghkey_m" >> "$GITHUB_ENV"
+          $ghsecret_m = "${{ env.ghsecret }}" -replace '-', '_'
+          $ghkey_m = "${{ env.ghkey }}" -replace '-', '_'
+          "ghsecret_m=$ghsecret_m" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+          "ghkey_m=$ghkey_m" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
       - name: Verify toolchain
         run: |
@@ -189,10 +189,11 @@ jobs:
           az version
 
       - name: Azure login
+        shell: pwsh
         run: |
-          az login --service-principal \
-            -u "${{ secrets[env.ghkey_m] }}" \
-            -p "${{ secrets[env.ghsecret_m] }}" \
+          az login --service-principal `
+            -u "${{ secrets[env.ghkey_m] }}" `
+            -p "${{ secrets[env.ghsecret_m] }}" `
             --tenant "${{ secrets.TENANT_ID }}"
           az account set --subscription "${{ secrets.SUBSCRIPTION_ID }}"
           az account show
@@ -282,12 +283,12 @@ jobs:
           path: modules
 
       - name: Set Azure credential secret names
-        shell: bash
+        shell: pwsh
         run: |
-          ghsecret_m=$(echo "${{ env.ghsecret }}" | sed 's/-/_/g')
-          ghkey_m=$(echo "${{ env.ghkey }}" | sed 's/-/_/g')
-          echo "ghsecret_m=$ghsecret_m" >> "$GITHUB_ENV"
-          echo "ghkey_m=$ghkey_m" >> "$GITHUB_ENV"
+          $ghsecret_m = "${{ env.ghsecret }}" -replace '-', '_'
+          $ghkey_m = "${{ env.ghkey }}" -replace '-', '_'
+          "ghsecret_m=$ghsecret_m" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+          "ghkey_m=$ghkey_m" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
       - name: Verify toolchain
         run: |
@@ -295,10 +296,11 @@ jobs:
           az version
 
       - name: Azure login
+        shell: pwsh
         run: |
-          az login --service-principal \
-            -u "${{ secrets[env.ghkey_m] }}" \
-            -p "${{ secrets[env.ghsecret_m] }}" \
+          az login --service-principal `
+            -u "${{ secrets[env.ghkey_m] }}" `
+            -p "${{ secrets[env.ghsecret_m] }}" `
             --tenant "${{ secrets.TENANT_ID }}"
           az account set --subscription "${{ secrets.SUBSCRIPTION_ID }}"
           az account show
