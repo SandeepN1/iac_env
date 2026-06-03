@@ -41,11 +41,6 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      - name: Cleanup workspace permissions
-        shell: bash
-        run: |
-          sudo chown -R $USER:$USER $GITHUB_WORKSPACE || true
-
       - name: Checkout current repository
         uses: actions/checkout@v4
 
@@ -120,11 +115,6 @@ jobs:
     environment: terraform-apply
 
     steps:
-      - name: Cleanup workspace permissions
-        shell: bash
-        run: |
-          sudo chown -R $USER:$USER $GITHUB_WORKSPACE || true
-
       - name: Checkout current repository
         uses: actions/checkout@v4
 
@@ -173,11 +163,6 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      - name: Cleanup workspace permissions
-        shell: bash
-        run: |
-          sudo chown -R $USER:$USER $GITHUB_WORKSPACE || true
-
       - name: Checkout current repository
         uses: actions/checkout@v4
 
@@ -286,11 +271,6 @@ jobs:
     environment: terraform-apply
 
     steps:
-      - name: Cleanup workspace permissions
-        shell: bash
-        run: |
-          sudo chown -R $USER:$USER $GITHUB_WORKSPACE || true
-
       - name: Checkout current repository
         uses: actions/checkout@v4
 
