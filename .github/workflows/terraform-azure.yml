@@ -42,6 +42,7 @@ jobs:
 
     steps:
       - name: Cleanup workspace permissions
+        shell: bash
         run: |
           sudo chown -R $USER:$USER $GITHUB_WORKSPACE || true
 
@@ -120,6 +121,7 @@ jobs:
 
     steps:
       - name: Cleanup workspace permissions
+        shell: bash
         run: |
           sudo chown -R $USER:$USER $GITHUB_WORKSPACE || true
 
@@ -172,6 +174,7 @@ jobs:
 
     steps:
       - name: Cleanup workspace permissions
+        shell: bash
         run: |
           sudo chown -R $USER:$USER $GITHUB_WORKSPACE || true
 
@@ -284,6 +287,7 @@ jobs:
 
     steps:
       - name: Cleanup workspace permissions
+        shell: bash
         run: |
           sudo chown -R $USER:$USER $GITHUB_WORKSPACE || true
 
