@@ -48,6 +48,7 @@ jobs:
           with:
             app_id: ${{ secrets.MAF_GITHUB_APP_ID }}
             private_key: ${{ secrets.MAF_GITHUB_APP_PRIVATE_KEY }}
+            scope: GS-MAFTech
         - name: Use token
           env:
             TOKEN: ${{ steps.generate_token.outputs.token }}
@@ -269,6 +270,7 @@ jobs:
           with:
             app_id: ${{ secrets.MAF_GITHUB_APP_ID }}
             private_key: ${{ secrets.MAF_GITHUB_APP_PRIVATE_KEY }}
+            scope: GS-MAFTech
         - name: Use token
           env:
             TOKEN: ${{ steps.generate_token.outputs.token }}
@@ -369,6 +371,7 @@ jobs:
           with:
             app_id: ${{ secrets.MAF_GITHUB_APP_ID }}
             private_key: ${{ secrets.MAF_GITHUB_APP_PRIVATE_KEY }}
+            scope: GS-MAFTech
         - name: Use token
           env:
             TOKEN: ${{ steps.generate_token.outputs.token }}
@@ -625,6 +628,7 @@ jobs:
           with:
             app_id: ${{ secrets.MAF_GITHUB_APP_ID }}
             private_key: ${{ secrets.MAF_GITHUB_APP_PRIVATE_KEY }}
+            scope: GS-MAFTech
         - name: Use token
           env:
             TOKEN: ${{ steps.generate_token.outputs.token }}
