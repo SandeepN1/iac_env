@@ -260,7 +260,7 @@ jobs:
 
 
     aws_apply:
-        runs-on: iac
+        runs-on: self-hosted
         environment: 'terraform-apply'
         needs: [aws_plan]
         steps:
@@ -361,7 +361,7 @@ jobs:
     
     azure_plan:
         if: github.event.inputs.CloudProvider == 'azure'
-        runs-on: iac
+        runs-on: self-hosted
          
         steps:
         - name: Generate token
@@ -616,7 +616,7 @@ jobs:
               - text: COST Details
                 url: "https://github.com/${{github.repository}}/commit/${{github.sha}}/#commitcomment-${{ env.commitcomm }}"                 
     azure_apply:
-        runs-on: iac
+        runs-on: self-hosted
         environment: 'terraform-apply'
         needs: [azure_plan]
         steps:
