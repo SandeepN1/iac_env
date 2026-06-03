@@ -403,17 +403,17 @@ jobs:
             token: ${{ steps.generate_token.outputs.token }}
             path: ./modules
             ref: dev            
-        - name: Checkout Notification Action Repository in `./notify` directory
-          uses: actions/checkout@v2
-          with:
-            repository: GS-MAFTech/githubactions-msnotifications
-            token: ${{ steps.generate_token.outputs.token }}
-            ref: dev
-            path: ./notify
-        - name: Docker Login & Pull Image
-          run: echo  ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin && docker pull ghcr.io/gs-maftech/githubactions-msnotifications:v2
-        - name: Docker Login & Pull Image
-          run: echo  ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin && docker pull ghcr.io/gs-maftech/githubactions-provisioning:v6
+        # - name: Checkout Notification Action Repository in `./notify` directory
+        #   uses: actions/checkout@v2
+        #   with:
+        #     repository: GS-MAFTech/githubactions-msnotifications
+        #     token: ${{ steps.generate_token.outputs.token }}
+        #     ref: dev
+        #     path: ./notify
+        # - name: Docker Login & Pull Image
+        #   run: echo  ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin && docker pull ghcr.io/gs-maftech/githubactions-msnotifications:v2
+        # - name: Docker Login & Pull Image
+        #   run: echo  ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin && docker pull ghcr.io/gs-maftech/githubactions-provisioning:v6
         - name: Setting EnV Credentials
           run: |
             ghsecret_m=$(echo "${{ env.ghsecret }}"|sed 's/-/_/g') && echo "ghsecret_m=$ghsecret_m" >> $GITHUB_ENV
@@ -659,17 +659,17 @@ jobs:
             token: ${{ steps.generate_token.outputs.token }}
             path: ./modules
             ref: dev            
-        - name: Checkout Notification Action Repository in `./notify` directory
-          uses: actions/checkout@v2
-          with:
-            repository: GS-MAFTech/githubactions-msnotifications
-            token: ${{ steps.generate_token.outputs.token }}
-            ref: dev
-            path: ./notify
-        - name: Docker Login & Pull Image
-          run: echo  ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin && docker pull ghcr.io/gs-maftech/githubactions-msnotifications:v2
-        - name: Docker Login & Pull Image
-          run: echo  ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin && docker pull ghcr.io/gs-maftech/githubactions-provisioning:v6
+        # - name: Checkout Notification Action Repository in `./notify` directory
+        #   uses: actions/checkout@v2
+        #   with:
+        #     repository: GS-MAFTech/githubactions-msnotifications
+        #     token: ${{ steps.generate_token.outputs.token }}
+        #     ref: dev
+        #     path: ./notify
+        # - name: Docker Login & Pull Image
+        #   run: echo  ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin && docker pull ghcr.io/gs-maftech/githubactions-msnotifications:v2
+        # - name: Docker Login & Pull Image
+        #   run: echo  ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin && docker pull ghcr.io/gs-maftech/githubactions-provisioning:v6
         - name: Setting EnV Credentials
           run: |
             ghsecret_m=$(echo "${{ env.ghsecret }}"|sed 's/-/_/g') && echo "ghsecret_m=$ghsecret_m" >> $GITHUB_ENV
