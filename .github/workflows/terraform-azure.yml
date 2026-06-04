@@ -208,6 +208,7 @@ jobs:
           az account show
 
       - name: Terraform init
+        shell: powershell
         working-directory: ${{ env.TF_WORKING_DIR }}
         env:
           ARM_CLIENT_SECRET: ${{ secrets[env.ghsecret_m] }}
@@ -222,6 +223,7 @@ jobs:
 
       - name: Terraform plan
         id: plan
+        shell: powershell
         working-directory: ${{ env.TF_WORKING_DIR }}
         env:
           ARM_CLIENT_SECRET: ${{ secrets[env.ghsecret_m] }}
@@ -235,6 +237,7 @@ jobs:
         run: terraform plan -out build.tfplan
 
       - name: Terraform show text
+        shell: powershell
         working-directory: ${{ env.TF_WORKING_DIR }}
         env:
           ARM_CLIENT_SECRET: ${{ secrets[env.ghsecret_m] }}
@@ -245,9 +248,10 @@ jobs:
           TF_VAR_SUBSCRIPTION_ID: ${{ secrets.SUBSCRIPTION_ID }}
           TF_VAR_CLIENT_ID: ${{ secrets[env.ghkey_m] }}
           TF_VAR_SECRET: ${{ secrets[env.ghsecret_m] }}
-        run: terraform show -no-color build.tfplan > "$GITHUB_WORKSPACE/plan.txt"
+        run: terraform show -no-color build.tfplan > "$env:GITHUB_WORKSPACE/plan.txt"
 
       - name: Terraform show json
+        shell: powershell
         working-directory: ${{ env.TF_WORKING_DIR }}
         env:
           ARM_CLIENT_SECRET: ${{ secrets[env.ghsecret_m] }}
@@ -258,7 +262,7 @@ jobs:
           TF_VAR_SUBSCRIPTION_ID: ${{ secrets.SUBSCRIPTION_ID }}
           TF_VAR_CLIENT_ID: ${{ secrets[env.ghkey_m] }}
           TF_VAR_SECRET: ${{ secrets[env.ghsecret_m] }}
-        run: terraform show -json build.tfplan > "$GITHUB_WORKSPACE/build_terraform.json"
+        run: terraform show -json build.tfplan > "$env:GITHUB_WORKSPACE/build_terraform.json"
 
       - name: TFLint init
         shell: powershell
@@ -308,6 +312,7 @@ jobs:
           "ghkey_m=$ghkey_m" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
       - name: Verify toolchain
+        shell: powershell
         run: |
           terraform version
           az version
@@ -323,6 +328,7 @@ jobs:
           az account show
 
       - name: Terraform init
+        shell: powershell
         working-directory: ${{ env.TF_WORKING_DIR }}
         env:
           ARM_CLIENT_SECRET: ${{ secrets[env.ghsecret_m] }}
@@ -336,6 +342,7 @@ jobs:
         run: terraform init
 
       - name: Terraform plan
+        shell: powershell
         working-directory: ${{ env.TF_WORKING_DIR }}
         env:
           ARM_CLIENT_SECRET: ${{ secrets[env.ghsecret_m] }}
@@ -349,6 +356,7 @@ jobs:
         run: terraform plan -out build.tfplan
 
       - name: Terraform apply
+        shell: powershell
         working-directory: ${{ env.TF_WORKING_DIR }}
         env:
           ARM_CLIENT_SECRET: ${{ secrets[env.ghsecret_m] }}
