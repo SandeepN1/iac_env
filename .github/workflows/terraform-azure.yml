@@ -182,9 +182,14 @@ jobs:
           "ghkey_m=$ghkey_m" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
       - name: Verify toolchain
+        shell: powershell
         run: |
           terraform version
-          tflint --version
+          if (Get-Command tflint -ErrorAction SilentlyContinue) {
+            tflint --version
+          } else {
+            Write-Host "tflint not installed on runner; skipping optional TFLint checks."
+          }
           jq --version
           az version
 
@@ -252,8 +257,14 @@ jobs:
         run: terraform show -json build.tfplan > "$GITHUB_WORKSPACE/build_terraform.json"
 
       - name: TFLint init
+        shell: powershell
         working-directory: ${{ env.TF_WORKING_DIR }}
-        run: tflint --init
+        run: |
+          if (Get-Command tflint -ErrorAction SilentlyContinue) {
+            tflint --init
+          } else {
+            Write-Host "tflint not installed on runner; skipping optional TFLint init."
+          }
 
       - name: Upload plan artifacts
         uses: actions/upload-artifact@v4
