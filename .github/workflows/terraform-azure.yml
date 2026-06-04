@@ -201,20 +201,6 @@ jobs:
             Write-Host "az CLI not installed on runner; skipping optional az version check."
           }
 
-      - name: Azure login
-        shell: powershell
-        run: |
-          if (Get-Command az -ErrorAction SilentlyContinue) {
-            az login --service-principal `
-              -u "${{ secrets[env.ghkey_m] }}" `
-              -p "${{ secrets[env.ghsecret_m] }}" `
-              --tenant "${{ secrets.TENANT_ID }}"
-            az account set --subscription "${{ secrets.SUBSCRIPTION_ID }}"
-            az account show
-          } else {
-            Write-Host "az CLI not installed on runner; skipping Azure CLI login and relying on ARM_* environment variables for Terraform authentication."
-          }
-
       - name: Terraform init
         shell: powershell
         working-directory: ${{ env.TF_WORKING_DIR }}
@@ -327,20 +313,6 @@ jobs:
             az version
           } else {
             Write-Host "az CLI not installed on runner; skipping optional az version check."
-          }
-
-      - name: Azure login
-        shell: powershell
-        run: |
-          if (Get-Command az -ErrorAction SilentlyContinue) {
-            az login --service-principal `
-              -u "${{ secrets[env.ghkey_m] }}" `
-              -p "${{ secrets[env.ghsecret_m] }}" `
-              --tenant "${{ secrets.TENANT_ID }}"
-            az account set --subscription "${{ secrets.SUBSCRIPTION_ID }}"
-            az account show
-          } else {
-            Write-Host "az CLI not installed on runner; skipping Azure CLI login and relying on ARM_* environment variables for Terraform authentication."
           }
 
       - name: Terraform init
