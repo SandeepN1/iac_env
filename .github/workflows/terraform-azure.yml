@@ -195,7 +195,11 @@ jobs:
           } else {
             Write-Host "jq not installed on runner; skipping optional jq check."
           }
-          az version
+          if (Get-Command az -ErrorAction SilentlyContinue) {
+            az version
+          } else {
+            Write-Host "az CLI not installed on runner; skipping optional az version check."
+          }
 
       - name: Azure login
         shell: powershell
@@ -315,7 +319,11 @@ jobs:
         shell: powershell
         run: |
           terraform version
-          az version
+          if (Get-Command az -ErrorAction SilentlyContinue) {
+            az version
+          } else {
+            Write-Host "az CLI not installed on runner; skipping optional az version check."
+          }
 
       - name: Azure login
         shell: powershell
