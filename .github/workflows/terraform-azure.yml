@@ -170,6 +170,9 @@ jobs:
           repository: SandeepN1/Test_Terraform_Modules
           path: modules
 
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
       - name: Set Azure credential secret names
         shell: powershell
         run: |
@@ -277,6 +280,9 @@ jobs:
         with:
           repository: SandeepN1/Test_Terraform_Modules
           path: modules
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
 
       - name: Set Azure credential secret names
         shell: powershell
