@@ -190,7 +190,11 @@ jobs:
           } else {
             Write-Host "tflint not installed on runner; skipping optional TFLint checks."
           }
-          jq --version
+          if (Get-Command jq -ErrorAction SilentlyContinue) {
+            jq --version
+          } else {
+            Write-Host "jq not installed on runner; skipping optional jq check."
+          }
           az version
 
       - name: Azure login
