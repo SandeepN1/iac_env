@@ -48,7 +48,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: SandeepN1/Test_Terraform_Modules
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.REPO_TOKEN }}
           path: modules
 
       - name: Set AWS credential secret names
@@ -122,7 +122,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: SandeepN1/Test_Terraform_Modules
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.REPO_TOKEN }}
           path: modules
 
       - name: Set AWS credential secret names
@@ -170,11 +170,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: SandeepN1/Test_Terraform_Modules
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.REPO_TOKEN }}
           path: modules
 
       - name: Set Azure credential secret names
-        shell: pwsh
+        shell: powershell
         run: |
           $ghsecret_m = "${{ env.ghsecret }}" -replace '-', '_'
           $ghkey_m = "${{ env.ghkey }}" -replace '-', '_'
@@ -189,7 +189,7 @@ jobs:
           az version
 
       - name: Azure login
-        shell: pwsh
+        shell: powershell
         run: |
           az login --service-principal `
             -u "${{ secrets[env.ghkey_m] }}" `
@@ -279,11 +279,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: SandeepN1/Test_Terraform_Modules
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.REPO_TOKEN }}
           path: modules
 
       - name: Set Azure credential secret names
-        shell: pwsh
+        shell: powershell
         run: |
           $ghsecret_m = "${{ env.ghsecret }}" -replace '-', '_'
           $ghkey_m = "${{ env.ghkey }}" -replace '-', '_'
@@ -296,7 +296,7 @@ jobs:
           az version
 
       - name: Azure login
-        shell: pwsh
+        shell: powershell
         run: |
           az login --service-principal `
             -u "${{ secrets[env.ghkey_m] }}" `
